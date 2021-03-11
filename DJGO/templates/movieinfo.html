@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMDR</title>
+    <style>
+        span{
+            width: 40px;
+            background-color: aqua;
+        }
+        body{
+            background-image: url("{% static 'pic/HKwebsite_large.jpg' %}");
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        table{
+            background-image: url("{% static 'pic/images.png' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: 300px;
+            width: 500px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;position: absolute;top: 10%;font-size: xxx-large;color: red">Netflix Movie&TvDrama Recommend</h1>
+    <h2 style="text-align: center;position: absolute;top: 20%;font-size: xx-large;color: red">The Result Depends On Yourself</h2>
+    <table border="1">
+        {% csrf_token %}
+        <tr>
+            <td>Title : </td>
+            <td>{{ info.title }}</td>
+        </tr>
+        <tr>
+            <td>Cast : </td>
+            <td>{{ info.cast }}</td>
+        </tr>
+        <tr>
+            <td>Director : </td>
+            <td>{{ info.director }}</td>
+        </tr>
+        <tr>
+            <td>Type : </td>
+            <td>{{ info.type }}</td>
+        </tr>
+        <tr>
+            <td>Duration : </td>
+            <td>{{ info.duration }}</td>
+        </tr>
+        <tr>
+            <td>Country : </td>
+            <td>{{ info.country }}</td>
+        </tr>
+        <tr>
+            <td>Type Of : </td>
+            <td>{{ info.listed_in }}</td>
+        </tr>
+        <tr>
+            <td>Description : </td>
+            <td>{{ info.description }}</td>
+        </tr>
+    </table>
+{#    <form method="post" action="/armake/">#}
+{#        {% csrf_token %}#}
+{#        {% for i,j in info.items %}#}
+{#        <span><button value="{{ i }}">{{ i }}</button></span>#}
+{#            <label>{{ i }}:{{ j}}</label>#}
+{#            <input type="checkbox" value="{{ i }}:{{ j }}" name="input"><br>#}
+{#        {% endfor %}#}
+{#        <input type="submit">#}
+{#    </form>#}
+</body>

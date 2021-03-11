@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Your Favorite Movie & TvDrama</title>
+    <style>
+        span{
+            width: 40px;
+            background-color: aqua;
+        }
+        body{
+            background-image: url("{% static 'pic/cardhouse.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            {#background-color: aquamarine;#}
+            background-image: url("{% static 'pic/cast.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 800px;
+            color: aqua;
+            {#float: left;#}
+            text-align: center;
+            {#display: inline-block;#}
+            {#position: absolute;#}
+
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;position: absolute;top: 10%;font-size: xxx-large;color: red">Netflix Movie&TvDrama Recommend</h1>
+    <h2 style="text-align: center;position: absolute;top: 20%;font-size: xx-large;color: red">The Result Depends On Yourself</h2>
+    <h3 style="text-align: center;position: absolute;top: 30%;font-size: large;color: aliceblue">Select One Cast</h3>
+    <form method="post" action="/armake/">
+        {% csrf_token %}
+        {% for i in cast_list %}
+            <label>{{ i }}</label>
+            <input  type="radio" value="{{ i }}" name="input"><br>
+        {% endfor %}
+        <input type="submit">
+    </form>
+
+</body>
+</html>
